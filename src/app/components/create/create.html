@@ -1,0 +1,11 @@
+<app-side-panel title="Create new user" (closePanel)="closePanel.emit()">
+  <form [formGroup]="form" class="mb-5">
+    <formly-form
+      [fields]="fields"
+      [form]="form"
+      [model]="populatedData"
+      (modelChange)="handleFormlyChange($event)"
+    ></formly-form>
+    <app-button text="Submit" size="md" (eventClick)="handleSubmit()"></app-button>
+  </form>
+</app-side-panel>

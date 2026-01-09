@@ -1,0 +1,51 @@
+@if (!ranking.length) {
+<app-no-data-found message="No ha habido combates por ahora"></app-no-data-found>
+} @else {
+<section class="rounded-lg border backdrop-blur-md overflow-hidden glow-border">
+  <div class="flex items-center gap-3 py-4 px-6 border-b">
+    <mat-icon class="material-symbols-outlined" fontIcon="trophy"></mat-icon>
+    <h2 class="text-xl font-bold">Ranking Galactico</h2>
+  </div>
+
+  <div class="w-full overflow-x-auto">
+    <table class="w-full text-left text-md">
+      <thead class="text-white/70">
+        <tr class="border-b border-white/10">
+          <th class="px-5 py-3 w-14">#</th>
+          <th class="px-5 py-3">Especie</th>
+          <th class="px-5 py-3">Poder</th>
+          <th class="px-5 py-3 text-accent">Victorias</th>
+          <th class="px-5 py-3 text-red-400">Derrotas</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-white/10">
+        @for (row of ranking; track $index) {
+        <tr class="hover:bg-white/5 transition">
+          <td class="px-5 py-4">
+            @if ($index === 0) {
+            <mat-icon class="material-symbols-outlined" fontIcon="trophy"></mat-icon>
+            } @else if ($index === 1) {
+            <mat-icon class="material-symbols-outlined" fontIcon="workspace_premium"></mat-icon>
+            } @else {
+            <span class="text-muted font-semibold">{{ $index + 1 }}</span>
+            }
+          </td>
+          <td class="px-5 py-4">
+            <span class="text-white font-semibold text-base">{{ row.name }}</span>
+          </td>
+          <td class="px-5 py-4">
+            <span class="text-muted font-semibold">{{ row.level }}</span>
+          </td>
+          <td class="px-5 py-4">
+            <span class="text-accent font-semibold">{{ row.wins }}</span>
+          </td>
+          <td class="px-5 py-4">
+            <span class="text-red-400 font-semibold">{{ row.losses }}</span>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+}

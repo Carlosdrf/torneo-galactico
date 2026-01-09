@@ -1,0 +1,32 @@
+<!-- <button
+  class="btn rounded p-2 mb-5 border w-{{ size }} border-{{ borderStyle }}"
+  (click)="eventClick.emit($event)"
+  [disabled]="disabled"
+>
+  <div class="flex align-middle justify-center gap-2">
+    @if (fontIcon) {
+    <mat-icon aria-label="icon" class="material-symbols-outlined" [fontIcon]="fontIcon"></mat-icon>
+    } @if (text) {
+    <span class="text-xl">{{ text }}</span>
+    }
+  </div>
+</button> -->
+<button
+  type="button"
+  class="btn inline-flex w-full select-none items-center justify-center gap-2 transition rounded my-5"
+  [ngClass]="[
+    glow ? 'glow-text-accent glow-border' : '',
+    borderStyle === 'dotted' ? 'border-dotted' : 'border-solid',
+    sizeClass[size],
+    variantClass[variant],
+    disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
+  ]"
+  (click)="eventClick.emit($event)"
+  [disabled]="disabled"
+>
+  @if (fontIcon) {
+  <mat-icon class="material-symbols-outlined" [fontIcon]="fontIcon" aria-hidden="true"> </mat-icon>
+  } @if (text) {
+  <span>{{ text }}</span>
+  }
+</button>

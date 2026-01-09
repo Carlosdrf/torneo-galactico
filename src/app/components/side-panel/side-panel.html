@@ -1,0 +1,11 @@
+<main class="side-panel">
+  <div class="overlay" (click)="close()" [ngClass]="{ 'fade-out': !show }"></div>
+  <div class="side-panel-body" [ngClass]="{ 'slide-out': !show, 'slide-in': show }">
+    <div class="panel-header p-2">
+      <h3 class>{{ title }}</h3>
+    </div>
+    <div class="side-panel-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</main>

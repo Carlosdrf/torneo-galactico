@@ -1,0 +1,18 @@
+<app-button
+  size="full"
+  variant="outline"
+  text="Registrar nueva especie"
+  borderStyle="dotted"
+  fontIcon="add"
+  (eventClick)="openSidePanel()"
+></app-button>
+
+<!-- list species -->
+<div class="grid grid-cols-2 gap-4 my-4">
+  @for (s of species; track $index) {
+  <app-species-card [species]="s" (actionClicked)="handleActionClick($event, s)"></app-species-card>
+  }
+</div>
+@if (!species.length) {
+<app-no-data-found message="No hay especies registradas para este torneo, comencemos el registro inmediato!"></app-no-data-found>
+}

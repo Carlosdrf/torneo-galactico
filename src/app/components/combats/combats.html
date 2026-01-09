@@ -1,0 +1,60 @@
+<section class="mb-6">
+  <h2 class="text-2xl font-bold">
+    <mat-icon class="material-symbols-outlined" fontIcon="swords"></mat-icon>
+    <span>Arena de combate</span>
+  </h2>
+  <div class="flex justify-between items-center gap-10">
+    <div class="flex-1" [ngClass]="{ 'left-fighter': fighting }">
+      <app-button
+        size="xl"
+        [text]="selectedSpecies[0] ? selectedSpecies[0].name : 'Selecciona Luchador 1'"
+        [glow]="activeSlot === 0"
+        variant="panel"
+        [glow]="true"
+        (eventClick)="activeSlot = 0"
+      ></app-button>
+    </div>
+
+    <div class="text-center">
+      <div class="winner">
+        @if (winner) {
+        <p>Ganador: {{ winner }}</p>
+
+        }
+      </div>
+      <h3 class="text-xl glow-text-accent font-bold" [ngClass]="{ fight: fighting }">VS</h3>
+      <app-button
+        size="md"
+        text="¡Luchar!"
+        variant="primary"
+        (eventClick)="startMatch()"
+      ></app-button>
+    </div>
+    <div class="flex-1" [ngClass]="{ 'right-fighter': fighting }">
+      <app-button
+        size="xl"
+        [text]="selectedSpecies[1] ? selectedSpecies[1].name : 'Selecciona Luchador 1'"
+        [glow]="activeSlot === 1"
+        variant="panel"
+        (eventClick)="activeSlot = 1"
+      ></app-button>
+    </div>
+  </div>
+</section>
+
+<div class="text-center">
+  <p>{{ message }}</p>
+</div>
+@if (!species.length) {
+<app-no-data-found
+  message="No se puede iniciar combates si no hay al menos dos especies registradas"
+></app-no-data-found>
+} @else {
+<div class="grid grid-cols-3 gap-4 my-4">
+  @for (s of species; track $index) {
+  <div class="cursor-pointer" (click)="handleSelection(s)">
+    <app-species-card [species]="s" [showActionButtons]="false"></app-species-card>
+  </div>
+  }
+</div>
+}

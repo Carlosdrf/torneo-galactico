@@ -1,0 +1,10 @@
+<div class="p-5 text-center text-6xl mb-10 font-bold">
+  <p>Torneo <span class="text-accent glow-text-accent">Galáctico</span></p>
+</div>
+<section class="w-full px-40">
+  <div class="mb-10">
+    <app-section-tabs (selectedTab)="handleSelectedTab($event)"></app-section-tabs>
+  </div>
+  <app-tab-orchestrator [tab]="selectedTab"></app-tab-orchestrator>
+</section>
+<router-outlet />

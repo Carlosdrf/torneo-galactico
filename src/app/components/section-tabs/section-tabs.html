@@ -1,0 +1,12 @@
+<section class="text-center border rounded-lg flex gap-2 p-1">
+  @for (tab of tabs; track $index) {
+  <div
+    (click)="selectTab($index)"
+    [ngClass]="{ 'bg-accent text-blue-950': selected() === $index }"
+    class="flex flex-1 px-5 rounded-lg items-center justify-center text-xl gap-2 cursor-pointer"
+  >
+    <mat-icon class="material-symbols-outlined" [fontIcon]="tab.icon"></mat-icon>
+    <h2>{{ tab.name }}</h2>
+  </div>
+  }
+</section>

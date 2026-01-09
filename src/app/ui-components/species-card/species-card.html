@@ -1,0 +1,21 @@
+<div class="card border rounded border-buted p-3 glow-border">
+  <header class="card-header flex justify-between">
+    <h3 class="text-xl">Nombre: {{ species.name }}</h3>
+    @if (showActionButtons) {
+    <div class="flex gap-2">
+      @for (option of options; track $index) {
+      <app-button
+        [fontIcon]="option.icon"
+        (eventClick)="actionClicked.emit(option.action)"
+      ></app-button>
+      }
+    </div>
+    }
+  </header>
+  <section class="text-md">
+    <span>Poder: {{ species.level }}</span>
+  </section>
+  <section class="skill text-md">
+    <span>Habilidad especial: {{ species.skill }}</span>
+  </section>
+</div>

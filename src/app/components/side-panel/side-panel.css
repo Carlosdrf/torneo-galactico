@@ -1,0 +1,95 @@
+.side-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+.side-panel-body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100dvh; /* mejor en mobile que 100vh */
+  max-width: 720px;
+  width: 70%; /* tú lo seteas inline; esto es fallback */
+  background: #0b0f1a; /* surface dark */
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -24px 0 60px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  transform: translateX(0);
+  transition: transform 220ms ease;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-panel.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  height: 100vh;
+  width: 100vw;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  opacity: 1;
+  transition: width 0.5s ease;
+  pointer-events: auto; /* clickable */
+}
+.panel-header {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.side-panel-content {
+  padding: 16px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  color: #e5e7eb;
+}
+
+.slide-in {
+  animation: slideIn 0.5s;
+}
+
+.slide-out {
+  animation: slideOut 0.5s;
+}
+.fade-out {
+  animation: fadeOut 0.5s;
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
